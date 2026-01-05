@@ -1,11 +1,12 @@
 services:
   - type: web
-    name: weather-app
-    env: python
+    name: weather-frontend
+    env: node
     region: oregon
-    buildCommand: npm install && npm run dev
+    buildCommand: npm install && npm run build
+    startCommand: npm run serve
     envVars:
+      - key: NODE_ENV
+        value: production
       - key: PORT
         value: 10000
-      - key: DATABASE_URL
-        value: sqlite:////tmp/weather.db
