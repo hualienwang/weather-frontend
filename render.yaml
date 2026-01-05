@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: weather-app
+    env: python
+    region: oregon
+    buildCommand: npm install && npm run dev
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        value: sqlite:////tmp/weather.db
