@@ -14,12 +14,21 @@ export default defineConfig({
       '/api': {
         target: backendApiUrl,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets'
+    assetsDir: 'assets',
+    // 確保在生產構建時不包含代理配置
+    rollupOptions: {
+      external: []
+    }
+  },
+  // 添加環境變量支持
+  envDir: '.',
+  define: {
+    'process.env': process.env
   }
 })

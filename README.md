@@ -26,9 +26,27 @@ uvicorn main:app --reload
 
 主要配置：
 - 環境：Node.js
-- 構建命令：`npm install && npm run build`
+- 構建命令：`npm ci --only=production && npm run build`
 - 啟動命令：`npm run serve`
 - 需要設置環境變量 `BACKEND_API_URL` 指向後端 API 的 URL
+
+部署步驟：
+1. 在 GitHub 上創建此項目的分支或 fork
+2. 登錄 Render.com 帳戶
+3. 點擊 "New +" 按鈕，選擇 "Web Service"
+4. 連接您的 GitHub 帳戶並選擇此項目
+5. 在配置中：
+   - 環境：Node.js
+   - 運行時：默認
+   - 架構：選擇 "Production" 或 "Deploy to Preview"
+   - 构建命令：`npm ci --only=production && npm run build`
+   - 啟動命令：`npm run serve`
+   - 環境變量：
+     - `NODE_ENV`: `production`
+     - `PORT`: `10000`
+     - `BACKEND_API_URL`: 您的後端 API URL（例如：https://your-weather-backend.onrender.com）
+
+6. 點擊 "Create Web Service" 完成部署
 
 ### 後端部署
 
